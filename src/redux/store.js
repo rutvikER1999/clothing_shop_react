@@ -4,7 +4,11 @@ import rootReducer from './root-reducer';
 
 import { persistStore } from 'redux-persist'
 
-const middeleware = [logger];
+const middeleware = [];
+
+if (process.env.NODE_ENV === 'development'){
+    middeleware.push(logger);
+}
 
 export const store = createStore(rootReducer, applyMiddleware(...middeleware));
 
